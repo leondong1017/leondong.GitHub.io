@@ -181,5 +181,16 @@
 						$menu._hide();
 
 			});
+		
+		//oncontextmenu:右键菜单(环境菜单)显示的时候触发，通过return false阻止默认事件
+		var oDiv1=document.getElementById('div1');
+		document.oncontextmenu=function(ev){
+			var ev=ev || event;
+			var scrollTop=document.documentElement.scrollTop || document.body.scrollTop;
+			oDiv1.style.display='block';     
+			oDiv1.style.left=ev.clientX +scrollTop+ 'px';
+			oDiv1.style.top=ev.clientY +scrollTop+ 'px';
+			return false;
+		}
 
 })(jQuery);
