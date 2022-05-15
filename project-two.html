@@ -9,6 +9,16 @@
 		<title>About Me - Dong Design</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<style type="text/css">
+		#div1{
+			display: none;
+			position: absolute;
+			padding: 6px 10px;
+			color:#fff;
+			border-radius: 3px;
+			background-color: #666;
+			}
+		</style>
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
@@ -68,6 +78,8 @@
 							<span class="image 14"><img src="images/tesla/pic14.png" width="805" height="453" alt="" /></span>
 						</div>
 					</div>
+					
+					<div id="div1">&copy LeonDong版权所有</div>
 
 				<!-- Footer -->
 					<footer id="footer">
@@ -115,23 +127,19 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<script type='text/javascript'>
-				//禁用右键（防止右键查看源代码） 
-				window.οncοntextmenu=function(){return false;} 
-				//禁止任何键盘敲击事件（防止F12和shift+ctrl+i调起开发者工具） 
-				window.onkeydown = window.onkeyup = window.onkeypress = function () { 
-					window.event.returnValue = false; 
-					return false; 
-				} 
-				//如果用户在工具栏调起开发者工具，那么判断浏览器的可视高度和可视宽度是否有改变，如有改变则关闭本页面 
-				//var h = window.innerHeight,w=window.innerWidth; 
-				//window.onresize = function () { 
-				//	if (h!= window.innerHeight||w!=window.innerWidth){ 
-				//		window.close(); 
-				//		window.location = "about:blank"; 
-				//	} 
-				//} 
-			</script> 
+			<script type="text/javascript">
+				//oncontextmenu:右键菜单(环境菜单)显示的时候触发，通过return false阻止默认事件
+				var oDiv1=document.getElementById('div1');
+				document.οncοntextmenu=function(ev){
+					var ev=ev || event;
+					var scrollTop=document.documentElement.scrollTop || document.body.scrollTop;
+					oDiv1.style.display='block';     
+					oDiv1.style.left=ev.clientX +scrollTop+ 'px';
+					oDiv1.style.top=ev.clientY +scrollTop+ 'px';
+					return false;
+				}
+			</script>
+
 
 	</body>
 </html>
